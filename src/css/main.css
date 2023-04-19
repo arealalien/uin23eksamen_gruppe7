@@ -1,0 +1,36 @@
+/* Main */
+/* Colors */
+/* Sizes */
+/* misc */
+/* Fonts */
+/* Flexbox */
+/* Columns */
+/* Spacings */
+/* Media Queries */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  color: hsl(0, 0%, 100%);
+  font-family: "Poppins", sans-serif;
+  background-color: hsl(270, 14%, 2%);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+.view-width {
+  width: calc(100% - 4em);
+  max-width: 1420px;
+}
+
+/* Selection */
+::selection {
+  color: hsl(0, 0%, 100%);
+  background: hsl(46, 100%, 50%);
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Nhc3MvX2NvbG9ycy5zY3NzIiwiLi4vc2Fzcy9fdXRpbGl0aWVzLnNjc3MiLCIuLi9zYXNzL19taXhpbnMuc2NzcyIsIi4uL3Nhc3MvbWFpbi5zY3NzIiwibWFpbi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsU0FBQTtBQUlBLFdBQUE7QUNKQSxVQUFBO0FBS0EsU0FBQTtBQUdBLFVBQUE7QUNSQSxZQUFBO0FBMEJBLFlBQUE7QUFxQ0EsYUFBQTtBQU1BLGtCQUFBO0FDakVBO0VBQ0UsbUJBQUE7QUNNRjs7QURKQTtFQUNFLFNBQUE7RUFDQSxXQUFBO0VBQ0EsdUJBQUE7RUFDQSxrQ0ZGVTtFRUdWLG1DQUFBO0VBQ0EsbUNBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0FDT0Y7O0FESkE7RUFDRSx1QkFBQTtFQUNBLGlCQUFBO0FDT0Y7O0FESkEsY0FBQTtBQUNBO0VBQ0UsdUJBQUE7RUFDQSw4QkFBQTtBQ09GIiwiZmlsZSI6Im1haW4uY3NzIn0= */

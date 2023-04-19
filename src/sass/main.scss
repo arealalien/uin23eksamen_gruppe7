@@ -1,0 +1,28 @@
+@import "colors";
+@import "utilities";
+@import "mixins";
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+html, body {
+  margin: 0;
+  width: 100%;
+  color: hslac($white, 1);
+  font-family: $font-main;
+  background-color: hslac($background-dark, 1);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+.view-width {
+  width: calc(100% - 4em);
+  max-width: 1420px;
+}
+
+/* Selection */
+::selection {
+  color: hslac($white, 1);
+  background: hslac($primary, 1);
+}
