@@ -14,15 +14,324 @@ html, body {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .view-width {
-  width: calc(100% - 4em);
-  max-width: 1420px;
+  width: calc(100% - 6em);
+}
+
+#root {
+  @include flex-center();
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 20em 1fr;
+  place-items: center;
+}
+
+/* Left */
+/* Sidebar */
+.sidebar {
+  margin: 0; padding: 2em 0 0 0;
+  width: 100%; height: 100vh;
+  display: grid;
+  position: relative;
+  grid-template-rows: 5em 1fr;
+  z-index: 10;
+  &-logo {
+    height: 1.5em;
+    fill: transparent;
+    stroke: hslac($white, 1);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2em;
+    &-wrapper {
+      width: 100%; height: 5em;
+      cursor: pointer;
+      @include flex-left();
+    }
+  }
+  &-items {
+    padding: 2em 0;
+    width: 100%; height: 100%;
+    display: grid;
+    &-top {
+      width: 100%;
+      &-list {
+        margin: 0; padding: 0;
+        width: 100%;
+        list-style-type: none;
+        gap: .5em;
+        @include flex-col-left-ns();
+
+        &-item {
+          width: 100%;
+          &-link {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &-bottom {
+      width: 100%;
+      @include flex-col-right();
+
+      &-list {
+        margin: 0; padding: 0;
+        width: 100%;
+        list-style-type: none;
+        gap: .5em;
+        @include flex-col-left-ns();
+
+        &-item {
+          width: 100%;
+          &-link {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Right */
+/* Content */
+.content {
+  padding: 2em 0 0 0;
+  width: 100%; height: 100vh;
+  position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
+  z-index: 10;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%; height: 5em;
+  display: grid;
+  position: relative;
+  grid-template-columns: 70% 1fr;
+  gap: 2em;
+
+  &-left {
+    width: 100%; height: 100%;
+    @include flex-left();
+
+    &-search {
+      width: 100%; height: 100%;
+      @include flex-left();
+
+      &-icon {
+        left: 1em;
+        width: 1em;
+        position: absolute;
+        #search-outer {
+          stroke: none;
+          stroke-width: 1;
+          fill: none;
+          fill-rule: evenodd;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        #search {
+          stroke: hslac($white, .75);
+          stroke-width: 1.5px;
+        }
+      }
+      &-input {
+        padding: 0 3.25em;
+        width: 40%; height: 3em;
+        color: hslac($white, 1);
+        background-color: hslac($white, .13);
+        border-radius: 5rem;
+        border: none;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          font-family: $font-main;
+          color: hslac($white, .5);
+        }
+      }
+    }
+  }
+  &-right {
+    width: 100%; height: 100%;
+    @include flex-center();
+
+    &-items {
+      width: 100%; height: 100%;
+      display: grid;
+      grid-template-columns: 3em 3em 1fr;
+      place-items: center;
+      gap: 1em;
+
+      &-button {
+        width: 100%; height: 3em;
+        background-color: hslac($white, .13);
+        border-radius: 50%;
+      }
+      &-profile {
+        width: 100%; height: 3em;
+        display: grid;
+        grid-template-columns: 3em 1fr .75em;
+        place-items: center;
+        gap: .75em;
+
+        &-picture {
+          width: 100%; height: 3em;
+          position: relative;
+          border-radius: 50%;
+          border: 2px solid hslac($primary, 1);
+          box-shadow: 0 3px 12px -2px hslac($primary, .6);
+          overflow: hidden;
+
+          @include flex-center();
+          &-inner {
+            min-width: 100%; min-height: 100%;
+            max-width: 110%;
+            position: absolute;
+            object-fit: cover;
+          }
+        }
+        &-name {
+          margin: 0;
+          width: 100%;
+          color: hslac($white, 1);
+        }
+        &-arrow {
+          margin: 0 2.5em 0 0;
+          width: 100%;
+          path {
+            fill: none;
+            stroke: hslac($white, 1);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Main */
+.main {
+  width: 100%; height: 100%;
+}
+
+/* Header */
+.header {
+  width: 100%; height: 35em;
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  gap: 2em;
+
+  &-left {
+    width: 100%; height: 100%;
+    @include flex-center();
+
+    &-wrapper {
+      width: 100%; height: 100%;
+      border-radius: 2rem;
+      overflow: hidden;
+      &-background {
+        width: 100%; height: 100%;
+        position: relative;
+        overflow: hidden;
+        @include flex-center();
+
+        &::after {
+          width: 100%; height: 100%;
+          content: "";
+          position: absolute;
+          background: linear-gradient(hslac($black, 0) 0, hslac($black, 0) 64%, hslac($black, .64) 100%);
+          z-index: 15;
+        }
+        &-image {
+          min-width: 100%; min-height: 100%;
+          max-width: 110%;
+          position: absolute;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  &-right {
+    width: 100%; height: 100%;
+    @include flex-center();
+
+    &-wrapper {
+      width: 100%; height: 100%;
+      border-radius: 2rem;
+      overflow: hidden;
+      &-background {
+        width: 100%; height: 100%;
+        position: relative;
+        overflow: hidden;
+        @include flex-center();
+
+        &::after {
+          width: 100%; height: 100%;
+          content: "";
+          position: absolute;
+          background-color: hslac($black, .25);
+          backdrop-filter: blur(2rem);
+          z-index: 15;
+        }
+        &-image {
+          min-width: 100%; min-height: 100%;
+          max-width: 110%;
+          position: absolute;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+/* background */
+.c-blurred {
+  &-red {
+    width: 50em; height: 50em;
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100rem);
+    background-image: radial-gradient(circle, hslac($red, .27) 0%, hslac($red, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  &-blue {
+    left: 0; bottom: -25em;
+    width: 25em; height: 25em;
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10rem);
+    background-image: radial-gradient(circle, hslac($blue, .27) 0%, hslac($blue, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
 }
 
 /* Selection */
 ::selection {
   color: hslac($white, 1);
   background: hslac($primary, 1);
+}
+/* Scrollbar */
+::-webkit-scrollbar-track {
+  background-color: hslac($background, 1);
+}
+::-webkit-scrollbar {
+  width: 1em;
+  display: none;
+  background-color: hslac($background, 1);
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+  border: 5px solid hslac($background, 1);
+  background-color: hslac($white, 1);
+  border-radius: 100vw;
 }
