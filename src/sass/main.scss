@@ -252,6 +252,8 @@ html, body {
 /* Main */
 .main {
   width: 100%; height: 100%;
+  gap: 5em;
+  @include flex-col();
 }
 
 /* Header */
@@ -330,6 +332,35 @@ html, body {
           backdrop-filter: blur(2rem);
           z-index: 15;
         }
+        &-image {
+          min-width: 100%; min-height: 100%;
+          max-width: 110%;
+          position: absolute;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+/* Game */
+.game-scroller {
+  width: 100%; height: 20em;
+  &-inner {
+    width: 100%; height: 100%;
+    gap: 1em;
+    @include flex-left();
+
+    &-game {
+      width: 15em; height: 20em;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      &-background {
+        width: 100%; height: 100%;
+        position: relative;
+        overflow: hidden;
+        @include flex-center();
+
         &-image {
           min-width: 100%; min-height: 100%;
           max-width: 110%;

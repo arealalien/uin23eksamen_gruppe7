@@ -25,6 +25,46 @@ function Dashboard() {
                     </div>
                 </header>
 
+                <section className="game-scroller">
+                    <h2>Popular Games</h2>
+                    <div className="game-scroller-inner">
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                        <div className="game-scroller-inner-game">
+                            <div className="game-scroller-inner-game-background">
+                                <img className="game-scroller-inner-game-background-image" src="https://images.unsplash.com/photo-1678439988359-99f5c2e40429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2004&q=80" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </>
     );
