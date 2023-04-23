@@ -1,4 +1,7 @@
+import React from 'react';
 import './css/main.css';
+import {NavLink, Route, Routes} from "react-router-dom";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -16,15 +19,35 @@ function App() {
             <div className="sidebar-items">
                 <div className="sidebar-items-top">
                     <ul className="sidebar-items-top-list">
-                        <li className="sidebar-items-top-list-item"><a className="sidebar-items-top-list-item-link">Store</a></li>
-                        <li className="sidebar-items-top-list-item"><a className="sidebar-items-top-list-item-link">Library</a></li>
-                        <li className="sidebar-items-top-list-item"><a className="sidebar-items-top-list-item-link">Favorites</a></li>
+                        <li className="sidebar-items-top-list-item">
+                            <NavLink className="sidebar-items-top-list-item-link" to="/">
+                                Store
+                            </NavLink>
+                        </li>
+                        <li className="sidebar-items-top-list-item">
+                            <NavLink className="sidebar-items-top-list-item-link" to="/library">
+                                Library
+                            </NavLink>
+                        </li>
+                        <li className="sidebar-items-top-list-item">
+                            <NavLink className="sidebar-items-top-list-item-link" to="/favorites">
+                                Favorites
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
                 <div className="sidebar-items-bottom">
                     <ul className="sidebar-items-bottom-list">
-                        <li className="sidebar-items-bottom-list-item"><a className="sidebar-items-top-list-item-link">Settings</a></li>
-                        <li className="sidebar-items-bottom-list-item"><a className="sidebar-items-top-list-item-link">Help</a></li>
+                        <li className="sidebar-items-bottom-list-item">
+                            <NavLink className="sidebar-items-bottom-list-item-link" to="/settings">
+                                Settings
+                            </NavLink>
+                        </li>
+                        <li className="sidebar-items-bottom-list-item">
+                            <NavLink className="sidebar-items-bottom-list-item-link" to="/help">
+                                Help
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,8 +71,28 @@ function App() {
                 </div>
                 <div className="navbar-right">
                     <div className="navbar-right-items">
-                        <div className="navbar-right-items-button"></div>
-                        <div className="navbar-right-items-button"></div>
+                        <div className="navbar-right-items-button">
+                            <svg className="navbar-right-items-button-icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <title>Notification</title>
+                                <g id="notification-outer">
+                                    <g id="notification" transform="translate(4.614552, 2.514190)">
+                                        <path d="M7.38163814,2.84217094e-14 C2.94735243,2.84217094e-14 1.02068576,4.0152381 1.02068576,6.66952381 C1.02068576,8.65333333 1.30830481,8.06952381 0.210209572,10.4895238 C-1.13074281,13.9380952 4.26163814,15.347619 7.38163814,15.347619 C10.5006858,15.347619 15.8930667,13.9380952 14.5530667,10.4895238 C13.4549715,8.06952381 13.7425905,8.65333333 13.7425905,6.66952381 C13.7425905,4.0152381 11.8149715,2.84217094e-14 7.38163814,2.84217094e-14 Z" id="Stroke-1"/>
+                                        <path d="M9.691448,17.998 C8.39716229,19.4437143 6.37811467,19.4608571 5.071448,17.998" id="Stroke-3"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div className="navbar-right-items-button">
+                            <svg className="navbar-right-items-button-icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <title>Bag</title>
+                                <g id="bag-outer">
+                                    <g id="bag" transform="translate(2.950000, 2.649693)">
+                                        <path d="M12.7999111,6.82200709 L12.7999111,3.79000709 C12.8049,1.70200709 11.1159,0.00500709014 9.0279,3.55271368e-15 C6.9389,-0.00399290986 5.2429,1.68500709 5.2379,3.77300709 L5.2379,6.82200709" id="Stroke-1"/>
+                                        <path d="M5.32907052e-15,11.557807 C5.32907052e-15,6.263807 2.255,4.498807 9.019,4.498807 C15.783,4.498807 18.038,6.263807 18.038,11.557807 C18.038,16.850807 15.783,18.615807 9.019,18.615807 C2.255,18.615807 5.32907052e-15,16.850807 5.32907052e-15,11.557807 Z" id="Stroke-3"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
                         <div className="navbar-right-items-profile">
                             <div className="navbar-right-items-profile-picture">
                                 <img className="navbar-right-items-profile-picture-inner" src="https://images.unsplash.com/photo-1628155090368-c65ef1293bf0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="" />
@@ -63,25 +106,9 @@ function App() {
                 </div>
             </nav>
 
-            <main className="main">
-                <header className="header">
-                    <div className="header-left">
-                        <div className="header-left-wrapper">
-                            <div className="header-left-wrapper-background">
-                                <img className="header-left-wrapper-background-image" src="https://images.unsplash.com/photo-1667818139461-7772a11554f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="header-right">
-                        <div className="header-right-wrapper">
-                            <div className="header-right-wrapper-background">
-                                <img className="header-right-wrapper-background-image" src="https://images.unsplash.com/photo-1667818139461-7772a11554f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-            </main>
+            <Routes>
+                <Route path="/" element={<Dashboard/>}/>
+            </Routes>
 
         </div>
         <div className="c-blurred-blue"></div>

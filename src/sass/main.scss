@@ -27,7 +27,7 @@ html, body {
 
 .App {
   display: grid;
-  grid-template-columns: 20em 1fr;
+  grid-template-columns: 12.5em 1fr;
   place-items: center;
 }
 
@@ -70,6 +70,13 @@ html, body {
           width: 100%;
           &-link {
             width: 100%;
+            font-size: 1.22rem;
+            color: hslac($white, 1);
+            text-decoration: none;
+            cursor: pointer;
+          }
+          &-link.active {
+            color: hslac($primary, 1);
           }
         }
       }
@@ -89,6 +96,13 @@ html, body {
           width: 100%;
           &-link {
             width: 100%;
+            font-size: 1.22rem;
+            color: hslac($white, 1);
+            text-decoration: none;
+            cursor: pointer;
+          }
+          &-link.active {
+            color: hslac($primary, 1);
           }
         }
       }
@@ -172,6 +186,24 @@ html, body {
         width: 100%; height: 3em;
         background-color: hslac($white, .13);
         border-radius: 50%;
+        @include flex-center();
+
+        &-icon {
+          left: 2em;
+          width: 1.75em;
+          #notification-outer, #bag-outer {
+            stroke: none;
+            stroke-width: 1;
+            fill: none;
+            fill-rule: evenodd;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+          #notification, #bag {
+            stroke: hslac($white, .75);
+            stroke-width: 1.5px;
+          }
+        }
       }
       &-profile {
         width: 100%; height: 3em;
@@ -235,8 +267,25 @@ html, body {
 
     &-wrapper {
       width: 100%; height: 100%;
+      position: relative;
       border-radius: 2rem;
       overflow: hidden;
+
+      &-categories {
+        left: 1.25em; top: 1.25em;
+        position: absolute;
+        gap: .5em;
+        z-index: 20;
+        @include flex-left();
+
+        &-item {
+          padding: .75em 1.15em;
+          font-size: .8rem;
+          background-color: hslac($black, .5);
+          backdrop-filter: blur(.5rem);
+          border-radius: 5em;
+        }
+      }
       &-background {
         width: 100%; height: 100%;
         position: relative;
