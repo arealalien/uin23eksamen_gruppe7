@@ -1,45 +1,144 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+
+const Header = ({ game, isCurrent }) => {
+    const backgroundStyle = {
+        opacity: isCurrent ? 1 : 0,
+        transition: "opacity 1s cubic-bezier(.175, .285, .32, 1)",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        zIndex: 1,
+    };
+
+    const headerLeftWrapperStyle = {
+        zIndex: 2,
+        opacity: isCurrent ? "1" : "0",
+        transition: "opacity .8s cubic-bezier(.175, .285, .32, 1)",
+    };
+
+    const categoryStyle = {
+        opacity: isCurrent ? "1" : "0",
+        transition: "opacity .8s cubic-bezier(.175, .285, .32, 1) .8s",
+    };
+
+    const logoStyle = {
+        opacity: isCurrent ? "1" : "0",
+        transition: "opacity .8s cubic-bezier(.175, .285, .32, 1) .8s",
+    };
+
+    return (
+        <div className="header-inner">
+            <img className="background-blur" style={backgroundStyle} src={game.background_image} alt={game.name} />
+            <div className="header-left">
+                <div className="header-left-wrapper" style={headerLeftWrapperStyle}>
+                    <div className="header-left-wrapper-categories" style={categoryStyle}>
+                        {game.genres.slice(0, 3).map((genre) => (
+                            <a className="header-left-wrapper-categories-item" key={genre.id}>
+                                {genre.name}
+                            </a>
+                        ))}
+                        {game.genres.length > 3 && (
+                            <a className="header-left-wrapper-categories-item" key="more">
+                                +
+                            </a>
+                        )}
+                    </div>
+                    <h1 className="header-left-wrapper-logo" style={logoStyle}>
+                        {game.name}
+                    </h1>
+                    <div className="header-left-wrapper-background" style={backgroundStyle}>
+                        <img className="header-left-wrapper-background-image" src={game.background_image} alt={game.name} />
+                    </div>
+                </div>
+            </div>
+            <div className="header-right">
+                <div className="header-right-wrapper" style={headerLeftWrapperStyle}>
+                    <div className="header-right-wrapper-background" style={backgroundStyle}>
+                        <img className="header-right-wrapper-background-image" src={game.background_image} alt={game.name} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const HeaderSlider = ({ games }) => {
+    const [currentIndex, setCurrentGameIndex] = useState(0);
+    const sliderRef = useRef(null);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentGameIndex((currentIndex) => (currentIndex + 1) % games.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [games]);
+
+    useEffect(() => {
+        setCurrentGameIndex(0); // reset currentIndex when games prop changes
+    }, [games]);
+
+    const handleTransitionEnd = () => {
+        const { children } = sliderRef.current;
+        const lastChild = children[children.length - 1];
+        if (lastChild && lastChild.dataset.index !== `${currentIndex}`) {
+            lastChild.style.transition = 'none';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    lastChild.style.transition = 'opacity 1s cubic-bezier(.175, .285, .32, 1)';
+                    lastChild.style.opacity = '0';
+                });
+            });
+        }
+    };
+
+    return (
+        <div ref={sliderRef} className="header-slider" onTransitionEnd={handleTransitionEnd}>
+            {games.map((game, index) => (
+                <div
+                    key={game.id}
+                    className={`header-slider-item${currentIndex === index ? ' header-slider-item-current' : ''}`}
+                    style={{ zIndex: currentIndex === index ? 1 : 0 }}
+                    data-index={index}
+                >
+                    <Header game={game} isCurrent={currentIndex === index} />
+                </div>
+            ))}
+        </div>
+    );
+};
+
 function Dashboard() {
     const [latestGames, setLatestGames] = useState([]);
     const [myGames, setMyGames] = useState([]);
     const [headerGames, setHeaderGames] = useState([]);
-    const fetchHeaderGames = async () => { const response = await axios.get('https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&search=Snufkin: Melody of Moominvalley,Oxenfree II: Lost Signals,Planet of Lana&page_size=1'); setHeaderGames(response.data.results); };
+    const [currentGameIndex, setCurrentGameIndex] = useState(0);
     const fetchLatestGames = async () => { const response2 = await axios.get('https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&ordering=-rating&page_size=3'); setLatestGames(response2.data.results); };
     const fetchMyGames = async () => { const response3 = await axios.get('https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&genres=adventure&ordering=-rating&page_size=5'); setMyGames(response3.data.results); };
     useEffect(() => {
         fetchLatestGames();
-        fetchHeaderGames()
         fetchMyGames();
+    }, []);
+
+    useEffect(() => {
+        const fetchHeaderGames = async () => {
+            const response = await axios.get(
+                'https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&search=Snufkin: Melody of Moominvalley,Starfield,Oxenfree II: Lost Signals,Planet of Lana,Scars Above&page_size=6'
+            );
+            setHeaderGames(response.data.results);
+        };
+        fetchHeaderGames();
     }, []);
 
     return (
         <>
             <main className="main">
-                {headerGames.map(game => (
-                    <header className="header" key={game.id}>
-                        <div className="header-left">
-                            <div className="header-left-wrapper">
-                                <div className="header-left-wrapper-categories">
-                                    {game.genres.map(genre => (
-                                        <a className="header-left-wrapper-categories-item" key={genre.id}>{genre.name}</a>
-                                    ))}
-                                </div>
-                                <h1 className="header-left-wrapper-logo">{game.name}</h1>
-                                <div className="header-left-wrapper-background">
-                                    <img className="header-left-wrapper-background-image" src={game.background_image} alt={game.name} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="header-right">
-                            <div className="header-right-wrapper">
-                                <div className="header-right-wrapper-background">
-                                    <img className="header-right-wrapper-background-image" src={game.background_image} alt={game.name} />
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-                ))}
+                <header className="header">
+                    <HeaderSlider games={headerGames} />
+                </header>
 
                 <section className="game-scroller">
                     <h2>Popular Games</h2>

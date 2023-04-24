@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App view-width">
 
+        <div className="space-container"></div>
         <div className="sidebar">
             <div className="sidebar-logo-wrapper">
                 <NavLink to="/">
@@ -177,7 +178,6 @@ function App() {
 
         </div>
         <div className="c-blurred-blue"></div>
-        <img className="background-blur" src="https://images.unsplash.com/photo-1667818139461-7772a11554f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80" alt="" />
     </div>
   );
 }

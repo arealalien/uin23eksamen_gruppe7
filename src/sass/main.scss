@@ -14,7 +14,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .view-width {
@@ -36,8 +35,8 @@ html, body {
 
 .App {
   display: grid;
-  grid-template-columns: 12.5em 1fr;
-  place-items: center;
+  grid-template-columns: 12.5em calc(100% - 12.5em);
+  place-items: flex-start;
   @include phone {
     grid-template-columns: 100%;
   }
@@ -45,17 +44,18 @@ html, body {
     grid-template-columns: 100%;
   }
   @include desktop {
-    grid-template-columns: 12em 1fr;
+    grid-template-columns: 12em calc(100% - 12em);
   }
 }
 
 /* Left */
 /* Sidebar */
 .sidebar {
+  top: 0; left: 3em;
   margin: 0; padding: 2em 0 0 0;
-  width: 100%; height: 100vh;
+  width: 12.5em; height: 100vh;
   display: grid;
-  position: relative;
+  position: fixed;
   grid-template-rows: 5em 1fr;
   z-index: 10;
   @include phone {
@@ -63,6 +63,10 @@ html, body {
   }
   @include tablet {
     display: none;
+  }
+  @include desktop {
+    left: 2.5em;
+    width: 12em;
   }
   &-logo {
     height: 1.5em;
@@ -179,10 +183,8 @@ html, body {
 /* Content */
 .content {
   padding: 2em 0 0 0;
-  width: 100%; height: 100vh;
+  width: 100%;
   position: relative;
-  overflow: hidden;
-  overflow-y: scroll;
   z-index: 10;
   @include phone {
     padding: 0;
@@ -449,17 +451,31 @@ html, body {
 /* Header */
 .header {
   width: 100%; height: 35em;
-  display: grid;
-  grid-template-columns: 70% 1fr;
-  gap: 2em;
-  @include phone {
-    grid-template-columns: 100%;
+  position: relative;
+
+  &-slider {
+    width: 100%; height: 100%;
+    position: absolute;
+    &-item {
+      width: 100%; height: 100%;
+      position: absolute;
+    }
   }
-  @include tablet {
-    grid-template-columns: 100%;
-  }
-  @include desktop {
-    grid-template-columns: 100%;
+  &-inner {
+    width: 100%; height: 100%;
+    display: grid;
+    position: absolute;
+    grid-template-columns: 70% 1fr;
+    gap: 2em;
+    @include phone {
+      grid-template-columns: 100%;
+    }
+    @include tablet {
+      grid-template-columns: 100%;
+    }
+    @include desktop {
+      grid-template-columns: 100%;
+    }
   }
 
   &-left {
@@ -469,6 +485,7 @@ html, body {
     &-wrapper {
       width: 100%; height: 100%;
       position: relative;
+      background-color: hslac($black, 1);
       border-radius: 2rem;
       overflow: hidden;
 
@@ -518,6 +535,7 @@ html, body {
   }
   &-right {
     width: 100%; height: 100%;
+    position: relative;
     @include flex-center();
     @include phone {
       display: none;
@@ -531,6 +549,8 @@ html, body {
 
     &-wrapper {
       width: 100%; height: 100%;
+      position: relative;
+      background-color: hslac($black, 1);
       border-radius: 2rem;
       overflow: hidden;
       &-background {
@@ -544,13 +564,13 @@ html, body {
           content: "";
           position: absolute;
           background-color: hslac($black, .25);
-          backdrop-filter: blur(2rem);
           z-index: 15;
         }
         &-image {
-          min-width: 100%; min-height: 100%;
-          max-width: 110%;
+          min-width: 110%; min-height: 110%;
+          max-width: 150%;
           position: absolute;
+          filter: blur(2rem);
           object-fit: cover;
         }
       }
@@ -629,13 +649,23 @@ html, body {
   }
 }
 .background-blur {
-  width: 50em; height: 50em;
+  width: 50vw; height: 75vh;
   position: absolute;
   border-radius: 50%;
   filter: blur(100rem);
   pointer-events: none;
+  user-select: none;
   opacity: .5;
   z-index: 1;
+  @include phone {
+    width: calc(100vw - 10vw); height: 75vh;
+  }
+  @include tablet {
+    width: calc(100vw - 15vw); height: 75vh;
+  }
+  @include desktop {
+    width: 60vw; height: 75vh;
+  }
 }
 
 /* Selection */
@@ -649,12 +679,10 @@ html, body {
 }
 ::-webkit-scrollbar {
   width: 1em;
-  display: none;
   background-color: hslac($background, 1);
 }
 ::-webkit-scrollbar-thumb {
-  display: none;
   border: 5px solid hslac($background, 1);
-  background-color: hslac($white, 1);
+  background-color: hslac($primary, 1);
   border-radius: 100vw;
 }
