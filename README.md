@@ -21,3 +21,6 @@ Builds the css file for production to the `css` folder.
 ## Dependencies / Packages used
 
 - React Router Dom [[npmjs](https://www.npmjs.com/package/react-router-dom)]
+  - command: `npm i react-router-dom`
+- react-axios [[npmjs](https://www.npmjs.com/package/react-axios)]
+  - command: `npm i react-axios`
