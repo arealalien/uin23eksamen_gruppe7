@@ -2,9 +2,11 @@ import { React, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 const Header = ({ game, isCurrent }) => {
+    const transitionDelay = isCurrent ? "0s" : "1s";
+
     const backgroundStyle = {
         opacity: isCurrent ? 1 : 0,
-        transition: "opacity 1s ease-in-out",
+        transition: `opacity 1s ease-in-out ${transitionDelay}`,
         position: "absolute",
         top: 0,
         left: 0,
@@ -16,17 +18,17 @@ const Header = ({ game, isCurrent }) => {
     const headerLeftWrapperStyle = {
         zIndex: 2,
         opacity: isCurrent ? "1" : "0",
-        transition: "opacity .8s ease-in-out",
+        transition: `opacity .8s ease-in-out ${transitionDelay}`,
     };
 
     const categoryStyle = {
         opacity: isCurrent ? "1" : "0",
-        transition: "opacity .8s ease-in-out",
+        transition: `opacity .8s ease-in-out ${transitionDelay}`,
     };
 
     const logoStyle = {
         opacity: isCurrent ? "1" : "0",
-        transition: "opacity .8s ease-in-out",
+        transition: `opacity .8s ease-in-out ${transitionDelay}`,
     };
 
     return (
