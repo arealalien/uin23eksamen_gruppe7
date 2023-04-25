@@ -456,9 +456,11 @@ html, body {
   &-slider {
     width: 100%; height: 100%;
     position: absolute;
+    transition: opacity 1s ease-in-out;
     &-item {
       width: 100%; height: 100%;
       position: absolute;
+      transition: opacity 1s ease-in-out;
     }
   }
   &-inner {
@@ -580,7 +582,13 @@ html, body {
 
 /* Game */
 .game-scroller {
-  width: 100%; height: 20em;
+  width: 100%;
+  gap: 1em;
+  @include flex-col-left-ns();
+
+  &-title {
+    margin: 0;
+  }
   &-inner {
     width: 100%; height: 100%;
     display: grid;
