@@ -58,6 +58,12 @@ const Header = ({ game, isCurrent }) => {
             </div>
             <div className="header-right">
                 <div className="header-right-wrapper" style={headerLeftWrapperStyle}>
+                    <div className="header-right-wrapper-top">
+                        <h2 className="header-right-wrapper-top-title">{game.name}</h2>
+                    </div>
+                    <div className="header-right-wrapper-bottom">
+                        <button className="header-right-wrapper-bottom-button">Avaliable now</button>
+                    </div>
                     <div className="header-right-wrapper-background" style={backgroundStyle}>
                         <img className="header-right-wrapper-background-image" src={game.background_image} alt={game.name} />
                     </div>
