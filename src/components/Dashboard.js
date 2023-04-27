@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 const Header = ({ game, isCurrent }) => {
@@ -152,12 +153,12 @@ function Dashboard() {
                     <h2 className="game-scroller-title">Popular Games</h2>
                     <div className="game-scroller-inner">
                         {latestGames.map(game => (
-                            <div className="game-scroller-inner-game" key={game.id}>
+                            <Link className="game-scroller-inner-game" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
                                 <h3 className="game-scroller-inner-game-title">{game.name}</h3>
                                 <div className="game-scroller-inner-game-background">
                                     <img className="game-scroller-inner-game-background-image" src={game.background_image} alt={game.name} />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>
@@ -166,12 +167,12 @@ function Dashboard() {
                     <h2 className="game-scroller-title">My Games</h2>
                     <div className="game-scroller-inner">
                         {myGames.map(game => (
-                            <div className="game-scroller-inner-game" key={game.id}>
+                            <Link className="game-scroller-inner-game" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
                                 <h3 className="game-scroller-inner-game-title">{game.name}</h3>
                                 <div className="game-scroller-inner-game-background">
                                     <img className="game-scroller-inner-game-background-image" src={game.background_image} alt={game.name} />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>

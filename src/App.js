@@ -4,6 +4,7 @@ import {NavLink, Route, Routes} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import MyGames from "./components/MyGames";
 import MyFavorites from "./components/MyFavorites";
+import GamePage from "./components/GamePage";
 
 function App() {
   return (
@@ -178,6 +179,7 @@ function App() {
                 <Route path="/" element={<Dashboard/>}/>
                 <Route path="/library" element={<MyGames/>}/>
                 <Route path="/favorites" element={<MyFavorites/>}/>
+                <Route path="/game/:gameName" element={<GamePage/>}/>
             </Routes>
 
             <footer className="footer">
@@ -191,3 +193,4 @@ function App() {
 }
 
 export default App;
+
