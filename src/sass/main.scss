@@ -502,6 +502,8 @@ html, body {
         margin: 0;
         left: 1em; bottom: .8em;
         position: absolute;
+        color: hslac($white, 1);
+        text-decoration: none;
         z-index: 20;
       }
       &-categories {
@@ -514,6 +516,8 @@ html, body {
         &-item {
           padding: .75em 1.15em;
           font-size: .8rem;
+          color: hslac($white, 1);
+          text-decoration: none;
           background-color: hslac($black, .5);
           backdrop-filter: blur(.5rem);
           border-radius: 5em;
@@ -587,6 +591,7 @@ html, body {
           padding: 1.2em 1.8em;
           font-size: $paragraph;
           color: hslac($white, 1);
+          text-decoration: none;
           background-color: hslac($black, .5);
           border-radius: .75rem;
           border: none;

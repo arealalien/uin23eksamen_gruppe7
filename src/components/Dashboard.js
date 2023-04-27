@@ -35,7 +35,7 @@ const Header = ({ game, isCurrent }) => {
     return (
         <div className="header-inner">
             <img className="background-blur" style={backgroundStyle} src={game.background_image} alt={game.name} />
-            <div className="header-left">
+            <Link className="header-left" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
                 <div className="header-left-wrapper" style={headerLeftWrapperStyle}>
                     <div className="header-left-wrapper-categories" style={categoryStyle}>
                         {game.genres.slice(0, 3).map((genre) => (
@@ -56,14 +56,14 @@ const Header = ({ game, isCurrent }) => {
                         <img className="header-left-wrapper-background-image" src={game.background_image} alt={game.name} />
                     </div>
                 </div>
-            </div>
+            </Link>
             <div className="header-right">
                 <div className="header-right-wrapper" style={headerLeftWrapperStyle}>
                     <div className="header-right-wrapper-top">
                         <h2 className="header-right-wrapper-top-title">{game.name}</h2>
                     </div>
                     <div className="header-right-wrapper-bottom">
-                        <button className="header-right-wrapper-bottom-button">Avaliable now</button>
+                        <Link className="header-right-wrapper-bottom-button" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>Avaliable now</Link>
                     </div>
                     <div className="header-right-wrapper-background" style={backgroundStyle}>
                         <img className="header-right-wrapper-background-image" src={game.background_image} alt={game.name} />
