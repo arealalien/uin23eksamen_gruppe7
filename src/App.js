@@ -180,6 +180,10 @@ function App() {
                 <Route path="/favorites" element={<MyFavorites/>}/>
             </Routes>
 
+            <footer className="footer">
+                <a className="footer-link" href="https://rawg.io/apidocs" target="_blank">rawg.io</a>
+            </footer>
+
         </div>
         <div className="c-blurred-blue"></div>
     </div>

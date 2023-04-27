@@ -493,7 +493,7 @@ html, body {
 
       &-logo {
         margin: 0;
-        left: 1em; bottom: 1em;
+        left: 1em; bottom: .8em;
         position: absolute;
         z-index: 20;
       }
@@ -581,7 +581,7 @@ html, body {
           font-size: $paragraph;
           color: hslac($white, 1);
           background-color: hslac($black, .5);
-          border-radius: .5rem;
+          border-radius: .75rem;
           border: none;
           cursor: pointer;
         }
@@ -704,6 +704,14 @@ html, body {
   }
   @include desktop {
     width: 60vw; height: 75vh;
+  }
+}
+/* Footer */
+.footer {
+  margin: 10em 0 0 0; padding: 2em 0;
+  &-link {
+    color: hslac($white, 1);
+    text-decoration: none;
   }
 }
 
