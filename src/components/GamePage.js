@@ -52,7 +52,7 @@ function GamePage() {
             <header className="header">
                 {headerGame && <Header game={headerGame} />}
             </header>
-            <main></main>
+            <main className="main"></main>
         </>
     );
 }
