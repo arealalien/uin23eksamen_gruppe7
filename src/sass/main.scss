@@ -16,6 +16,19 @@ html, body {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: $heading-large;
+}
+h2, h3, h4 {
+  font-size: $heading-medium;
+}
+h5, h6 {
+  font-size: $heading-small;
+}
+p {
+  font-size: $paragraph;
+}
+
 .view-width {
   width: calc(100% - 6em);
   @include phone {
@@ -443,7 +456,7 @@ html, body {
 
 /* Main */
 .main {
-  width: 100%;
+  width: 100%; min-height: 100vh;
   gap: 5em;
   @include flex-col-start-center();
 }
@@ -503,6 +516,8 @@ html, body {
         left: 1em; bottom: .8em;
         position: absolute;
         color: hslac($white, 1);
+        font-size: $heading-large;
+        line-height: 1;
         text-decoration: none;
         z-index: 20;
       }
@@ -646,12 +661,48 @@ html, body {
       overflow: hidden;
       @include flex-center();
 
-      &-title {
-        margin: 0; padding: 1em;
-        bottom: 0;
-        color: hslac($white, 1);
+      &-favorite {
+        top: 0; left: 0;
+        margin: .75em;
+        width: 2.25em; height: 2.25em;
         position: absolute;
+        border-radius: 50%;
+        background-color: hslac($black, .6);
+        backdrop-filter: blur(.6rem);
+        z-index: 20;
+        cursor: pointer;
+        @include flex-center();
+
+        &-icon {
+          width: 1.25em;
+          position: absolute;
+          #heart-outer, #heart-outer-fav {
+            stroke: none;
+            stroke-width: 1;
+            fill: none;
+            fill-rule: evenodd;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+          #heart {
+            stroke: hslac($white, .75);
+            stroke-width: 2px;
+          }
+          #heart-outer-fav {
+            stroke: hslac($primary, .75);
+            stroke-width: 2px;
+          }
+        }
+      }
+      &-title {
+        margin: 0; padding: .75em;
+        bottom: 0;
+        position: absolute;
+        color: hslac($white, 1);
+        font-size: $paragraph;
+        font-weight: 700;
         text-align: center;
+        line-height: 1.2em;
         text-decoration: none;
         word-break: break-word;
         z-index: 20;
