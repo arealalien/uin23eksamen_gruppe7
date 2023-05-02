@@ -160,12 +160,12 @@ function App() {
                                 </g>
                             </svg>
                         </NavLink>
-                        <NavLink className="navbar-right-items-profile" to="/">
+                        <NavLink className="navbar-right-items-profile" to="/library">
                             <div className="navbar-right-items-profile-picture">
-                                <img className="navbar-right-items-profile-picture-inner" src="https://images.unsplash.com/photo-1628155090368-c65ef1293bf0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="" />
+                                <img className="navbar-right-items-profile-picture-inner" src="https://images.unsplash.com/photo-1634448635949-31a5e8b9fd5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="" />
                             </div>
                             <div className="navbar-right-items-profile-name">
-                                <p className="navbar-right-items-profile-name-text">Username</p>
+                                <p className="navbar-right-items-profile-name-text">ThunderBelle37</p>
                             </div>
                             <svg className="navbar-right-items-profile-arrow" viewBox="0 0 9.49 5.14">
                                 <path d="m1,1l3.74,3.14,3.74-3.14"/>
@@ -193,4 +193,3 @@ function App() {
 }
 
 export default App;
-

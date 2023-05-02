@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import GameCard from "./GameCard";
 
 const Header = ({ game, isCurrent }) => {
     const transitionDelay = isCurrent ? "0s" : "1s";
@@ -141,6 +142,10 @@ function Dashboard() {
         };
         fetchHeaderGames();
     }, []);
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     return (
         <>
@@ -153,12 +158,7 @@ function Dashboard() {
                     <h2 className="game-scroller-title">Popular Games</h2>
                     <div className="game-scroller-inner">
                         {latestGames.map(game => (
-                            <Link className="game-scroller-inner-game" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
-                                <h3 className="game-scroller-inner-game-title">{game.name}</h3>
-                                <div className="game-scroller-inner-game-background">
-                                    <img className="game-scroller-inner-game-background-image" src={game.background_image} alt={game.name} />
-                                </div>
-                            </Link>
+                            <GameCard gameId={game.id} gameName={game.name} gameImage={game.background_image}></GameCard>
                         ))}
                     </div>
                 </section>
@@ -167,12 +167,7 @@ function Dashboard() {
                     <h2 className="game-scroller-title">My Games</h2>
                     <div className="game-scroller-inner">
                         {myGames.map(game => (
-                            <Link className="game-scroller-inner-game" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
-                                <h3 className="game-scroller-inner-game-title">{game.name}</h3>
-                                <div className="game-scroller-inner-game-background">
-                                    <img className="game-scroller-inner-game-background-image" src={game.background_image} alt={game.name} />
-                                </div>
-                            </Link>
+                            <GameCard gameId={game.id} gameName={game.name} gameImage={game.background_image}></GameCard>
                         ))}
                     </div>
                 </section>
