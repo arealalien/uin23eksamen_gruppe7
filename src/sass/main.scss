@@ -422,6 +422,7 @@ p {
           margin: 0;
           width: 100%;
           color: hslac($white, 1);
+          font-weight: 500;
           @include phone {
             display: none;
           }
@@ -511,6 +512,62 @@ p {
       border-radius: 2rem;
       overflow: hidden;
 
+      &-profile {
+        margin: 0;
+        left: 2em; bottom: 2em;
+        position: absolute;
+        gap: 1.5em;
+        z-index: 20;
+        @include flex-center();
+        @include phone {
+          left: 0; right: 0;
+          @include flex-col();
+        }
+        @include tablet {
+          left: 0; right: 0;
+          @include flex-col();
+        }
+
+        &-image {
+          width: 10em; height: 10em;
+          position: relative;
+          border-radius: 1em;
+          overflow: hidden;
+          @include flex-center();
+          @include phone {
+            width: 10em; height: 10em;
+          }
+          @include tablet {
+            width: 12em; height: 12em;
+          }
+          @include desktop {
+            width: 9em; height: 9em;
+          }
+
+          &-inner {
+            min-width: 100%; min-height: 100%;
+            max-width: 110%;
+            position: absolute;
+            object-fit: cover;
+          }
+        }
+        &-name {
+          margin: 0;
+          color: hslac($white, 1);
+          font-size: $heading-large;
+          line-height: 1;
+          text-decoration: none;
+          @include phone {
+            font-size: $heading-medium;
+          }
+          @include tablet {
+            font-size: $heading-medium;
+          }
+          @include desktop {
+            font-size: $heading-medium;
+          }
+        }
+      }
       &-logo {
         margin: 0;
         left: 1em; bottom: .8em;
@@ -639,6 +696,20 @@ p {
 }
 
 /* Game */
+.myscroller {
+  padding: 4em;
+  background-color: hslac($background-dark, 1);
+  border-radius: 2em;
+  @include phone {
+    padding: 1.5em;
+  }
+  @include tablet {
+    padding: 3em;
+  }
+  @include desktop {
+    padding: 2em;
+  }
+}
 .game-scroller {
   width: 100%;
   gap: 1em;
@@ -649,17 +720,45 @@ p {
     margin: 0;
   }
   &-inner {
-    height: 100%;
-    display: flex;
-    gap: 1em;
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2em;
     overflow: hidden;
+    @include phone {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1em;
+    }
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25em;
+    }
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5em;
+    }
 
     &-game {
-      width: 15em; height: 20em;
+      width: 100%; height: 1fr;
       position: relative;
       border-radius: 1.25rem;
       overflow: hidden;
       @include flex-center();
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 130%;
+      }
+      &:hover > &-background::after {
+        opacity: 0;
+      }
+      &:hover > &-background {
+        transform: scale(1.1, 1.1);
+      }
+      &:hover > &-title {
+        transform: scale(.95, .95);
+        opacity: 0;
+      }
 
       &-favorite {
         top: 0; left: 0;
@@ -696,7 +795,6 @@ p {
       }
       &-title {
         margin: 0; padding: .75em;
-        bottom: 0;
         position: absolute;
         color: hslac($white, 1);
         font-size: $paragraph;
@@ -705,18 +803,23 @@ p {
         line-height: 1.2em;
         text-decoration: none;
         word-break: break-word;
+        transition: all .3s cubic-bezier($transition-main, 1);
         z-index: 20;
       }
       &-background {
         width: 100%; height: 100%;
         position: relative;
+        transform: scale(1, 1);
+        transition: all .3s cubic-bezier($transition-main, 1);
         overflow: hidden;
         @include flex-center();
 
         &::after {
           width: 100%; height: 100%;
           content: "";
-          background: linear-gradient(hslac($black, 0) 0, hslac($black, .67) 100%);
+          background: linear-gradient(hslac($black, .52) 0, hslac($black, .88) 100%);
+          opacity: .66;
+          transition: all .3s cubic-bezier($transition-main, 1);
           z-index: 15;
         }
         &-image {
