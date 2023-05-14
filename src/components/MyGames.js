@@ -47,7 +47,7 @@ function MyGames() {
                     <h2 className="game-scroller-title">My Games</h2>
                     <div className="game-scroller-inner">
                         {myGames.map(game => (
-                            <MyGameCard game={game} gameId={game.id} gameName={game.name} gameImage={game.background_image}></MyGameCard>
+                            <MyGameCard favorites={favorites} game={game} gameId={game.id} gameName={game.name} gameImage={game.background_image}></MyGameCard>
                         ))}
                     </div>
                 </section>

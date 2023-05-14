@@ -1,8 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
-import { favorites } from "./Favorites";
 
-function MyGameCard( { game, gameId, gameName, gameImage } ) {
+function MyGameCard( { favorites, game, gameId, gameName, gameImage } ) {
     const [favorite, setFavorite] = useState(favorites.includes(game));
     const [favoriteText, setFavoriteText] = useState("");
 
