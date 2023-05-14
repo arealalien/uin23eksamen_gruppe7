@@ -1,20 +1,7 @@
 import { React, useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import { favorites } from './Favorites';
-
-function addToFavorites(game) {
-    if (!favorites.includes(game)) {
-        favorites.push(game);
-    }
-}
-
-function removeFromFavorites(game) {
-    const index = favorites.findIndex((favGame) => favGame.id === game.id);
-    if (index !== -1) {
-        favorites.splice(index, 1);
-    }
-}
+import MyGameCard from './MyGameCard';
 
 function MyGames() {
     const [myGames, setMyGames] = useState([]);
@@ -39,7 +26,14 @@ function MyGames() {
                                     <div className="header-left-wrapper-profile-image">
                                         <img className="header-left-wrapper-profile-image-inner" src="https://images.unsplash.com/photo-1634448635949-31a5e8b9fd5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="" />
                                     </div>
-                                    <h1 className="header-left-wrapper-profile-name">ThunderBelle37</h1>
+                                    <div className="header-left-wrapper-profile-details">
+                                        <h1 className="header-left-wrapper-profile-details-name">ThunderBelle37</h1>
+                                        <div className="header-left-wrapper-profile-details-items">
+                                            <p className="header-left-wrapper-profile-details-items-item">Level <span>52</span></p>
+                                            <p className="header-left-wrapper-profile-details-items-item">Badges <span>10</span></p>
+                                            <p className="header-left-wrapper-profile-details-items-item">Friends <span>17</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="header-left-wrapper-background">
                                     <img className="header-left-wrapper-background-image" src="https://images3.alphacoders.com/106/1065466.png" alt="" />
@@ -53,36 +47,7 @@ function MyGames() {
                     <h2 className="game-scroller-title">My Games</h2>
                     <div className="game-scroller-inner">
                         {myGames.map(game => (
-                            <div className="game-scroller-inner-game" key={game.id}>
-                                <div className="game-scroller-inner-game-favorite">
-                                    {favorites.includes(game) ? (
-                                        <svg className="game-scroller-inner-game-favorite-icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" onClick={() => removeFromFavorites(game)}>
-                                            <title>Heart Filled</title>
-                                            <g id="heart-outer-fav">
-                                                <g id="heart-fav" transform="translate(2.550170, 3.550158)">
-                                                    <path d="M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z" id="Stroke-1"/>
-                                                    <path d="M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842" id="Stroke-3"/>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    ) : (
-                                            <svg className="game-scroller-inner-game-favorite-icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" onClick={() => addToFavorites(game)}>
-                                                <title>Heart Filled</title>
-                                                <g id="heart-outer">
-                                                    <g id="heart" transform="translate(2.550170, 3.550158)">
-                                                        <path d="M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z" id="Stroke-1"/>
-                                                        <path d="M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842" id="Stroke-3"/>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        )
-                                    }
-                                </div>
-                                <Link className="game-scroller-inner-game-title" to={`/game/${encodeURIComponent(game.name)}`}>{game.name}</Link>
-                                <Link className="game-scroller-inner-game-background" to={`/game/${encodeURIComponent(game.name)}`}>
-                                    <img className="game-scroller-inner-game-background-image" src={game.background_image} alt={game.name} />
-                                </Link>
-                            </div>
+                            <MyGameCard game={game} gameId={game.id} gameName={game.name} gameImage={game.background_image}></MyGameCard>
                         ))}
                     </div>
                 </section>

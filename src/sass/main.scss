@@ -551,20 +551,36 @@ p {
             object-fit: cover;
           }
         }
-        &-name {
-          margin: 0;
-          color: hslac($white, 1);
-          font-size: $heading-large;
-          line-height: 1;
-          text-decoration: none;
-          @include phone {
-            font-size: $heading-medium;
+        &-details {
+          @include flex-col-left();
+
+          &-name {
+            margin: 0;
+            color: hslac($white, 1);
+            font-size: $heading-large;
+            line-height: 1;
+            text-decoration: none;
+            @include phone {
+              font-size: $heading-medium;
+            }
+            @include tablet {
+              font-size: $heading-medium;
+            }
+            @include desktop {
+              font-size: $heading-medium;
+            }
           }
-          @include tablet {
-            font-size: $heading-medium;
-          }
-          @include desktop {
-            font-size: $heading-medium;
+          &-items {
+            gap: .75em;
+            @include flex-left();
+
+            &-item {
+              margin: 0;
+              color: hslac($white, 1);
+              span {
+                color: hslac($primary, 1);
+              }
+            }
           }
         }
       }
