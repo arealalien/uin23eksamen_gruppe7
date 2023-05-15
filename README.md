@@ -2,6 +2,13 @@
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app).
 
+## Contributors
+
+[dlirA01 ♡](https://github.com/dlirA01) - Arild Edvin Andreassen\
+[saraks00](https://github.com/saraks00) - Sara Kristine Kvaale Stensrud\
+[HiroTachii](https://github.com/HiroTachii) - Alexander Sharma Nedrud\
+[xpandaao](https://github.com/xpandaao) - Ida Marie Kvaale Stensrud
+
 ## Scripts used for this project
 
 In the project directory, the mains scripts to run are:
