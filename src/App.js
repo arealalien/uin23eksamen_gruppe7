@@ -179,7 +179,7 @@ function App() {
                 <Route path="/" element={<Dashboard/>}/>
                 <Route path="/library" element={<MyGames/>}/>
                 <Route path="/favorites" element={<MyFavorites/>}/>
-                <Route path="/game/:gameName" element={<GamePage/>}/>
+                <Route path="/game/:gameId" element={<GamePage/>}/>
             </Routes>
 
             <footer className="footer">

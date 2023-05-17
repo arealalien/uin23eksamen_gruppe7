@@ -890,6 +890,147 @@ p {
     width: 60vw; height: 75vh;
   }
 }
+
+.game-details {
+  margin: 4em 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  place-items: flex-start;
+  gap: 3em;
+  @include phone {
+    grid-template-columns: 1fr;
+  }
+  @include tablet {
+    gap: 2em;
+  }
+  &-left {
+    width: 100%;
+    gap: 2em;
+    @include flex-col-left-ns();
+
+    &-description {
+      padding: 3em;
+      width: 100%;
+      background-color: hslac($background-dark, 1);
+      border-radius: 2rem;
+      gap: 1em;
+      @include flex-col-left-ns();
+      @include phone {
+        padding: 1.5em;
+      }
+      @include tablet {
+        padding: 2em;
+      }
+      @include desktop {
+        padding: 2.5em;
+      }
+
+      p {
+        margin: 0;
+        color: hslac($white, .88);
+        font-weight: 300;
+      }
+    }
+    &-developers {
+      width: 100%;
+      &-item {
+        width: 100%;
+        position: relative;
+        border-radius: 2rem;
+        overflow: hidden;
+        @include flex-center();
+
+        &-details {
+          padding: 3em 0;
+          width: 100%;
+          background-color: hslac($black, .4);
+          z-index: 2;
+          @include flex-col();
+
+          &-title {
+            margin: 0;
+            position: relative;
+            color: hslac($white, 1);
+            font-size: $heading-medium;
+            font-weight: 800;
+            text-decoration: none;
+            z-index: 3;
+          }
+        }
+        &-background {
+          min-width: 100%; min-height: 100%;
+          max-width: 110%;
+          position: absolute;
+          object-fit: cover;
+        }
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+  &-right {
+    min-width: 13em;
+    width: 100%;
+    gap: 2em;
+    @include flex-col();
+
+    &-top {
+      padding: 1.5em;
+      width: 100%;
+      background-color: hslac($background-dark, 1);
+      border-radius: 1.5rem;
+      gap: 1em;
+      @include flex-col-left();
+
+      &-block {
+        p:first-child {
+          color: hslac($quite-gray, 1);
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+    &-stores {
+      width: 100%;
+      gap: 1em;
+      @include flex-col-left-ns();
+
+      p {
+        margin: 0;
+      }
+      &-item {
+        width: 100%;
+        position: relative;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        @include flex-center();
+
+        &-details {
+          padding: 3em 0;
+          width: 100%;
+          background-color: hslac($black, .4);
+          z-index: 2;
+          @include flex-col();
+
+          &-title {
+            margin: 0 1em;
+            position: relative;
+            font-size: $heading-small;
+            z-index: 3;
+          }
+        }
+        &-background {
+          min-width: 100%; min-height: 100%;
+          max-width: 110%;
+          position: absolute;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
 /* Footer */
 .footer {
   margin: 10em 0 0 0; padding: 2em 0;

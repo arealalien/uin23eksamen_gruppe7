@@ -2,6 +2,7 @@ import { React, useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import GameCard from "./GameCard";
+import GameShop from "./GameShop";
 
 const Header = ({ game, isCurrent }) => {
     const transitionDelay = isCurrent ? "0s" : "1s";
@@ -36,7 +37,7 @@ const Header = ({ game, isCurrent }) => {
     return (
         <div className="header-inner">
             <img className="background-blur" style={backgroundStyle} src={game.background_image} alt={game.name} />
-            <Link className="header-left" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>
+            <Link className="header-left" key={game.id} to={`/game/${encodeURIComponent(game.id)}`}>
                 <div className="header-left-wrapper" style={headerLeftWrapperStyle}>
                     <div className="header-left-wrapper-categories" style={categoryStyle}>
                         {game.genres.slice(0, 3).map((genre) => (
@@ -64,7 +65,7 @@ const Header = ({ game, isCurrent }) => {
                         <h2 className="header-right-wrapper-top-title">{game.name}</h2>
                     </div>
                     <div className="header-right-wrapper-bottom">
-                        <Link className="header-right-wrapper-bottom-button" key={game.id} to={`/game/${encodeURIComponent(game.name)}`}>Avaliable now</Link>
+                        <Link className="header-right-wrapper-bottom-button" key={game.id} to={`/game/${encodeURIComponent(game.id)}`}>Avaliable now</Link>
                     </div>
                     <div className="header-right-wrapper-background" style={backgroundStyle}>
                         <img className="header-right-wrapper-background-image" src={game.background_image} alt={game.name} />
@@ -123,13 +124,10 @@ const HeaderSlider = ({ games }) => {
 };
 
 function Dashboard() {
-    const [latestGames, setLatestGames] = useState([]);
     const [myGames, setMyGames] = useState([]);
     const [headerGames, setHeaderGames] = useState([]);
-    const fetchLatestGames = async () => { const response2 = await axios.get('https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&ordering=-rating&page_size=3'); setLatestGames(response2.data.results); };
     const fetchMyGames = async () => { const response3 = await axios.get('https://api.rawg.io/api/games?key=affd029da2d94621a863f73fd5b36c21&genres=adventure&ordering=-rating&page_size=5'); setMyGames(response3.data.results); };
     useEffect(() => {
-        fetchLatestGames();
         fetchMyGames();
     }, []);
 
@@ -157,9 +155,7 @@ function Dashboard() {
                 <section className="game-scroller">
                     <h2 className="game-scroller-title">Popular Games</h2>
                     <div className="game-scroller-inner">
-                        {latestGames.map(game => (
-                            <GameCard gameId={game.id} gameName={game.name} gameImage={game.background_image}></GameCard>
-                        ))}
+                        <GameShop></GameShop>
                     </div>
                 </section>
 

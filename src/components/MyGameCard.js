@@ -41,8 +41,8 @@ function MyGameCard( { favorites, game, gameId, gameName, gameImage } ) {
                         </g>
                     </svg>
                 </div>
-                <Link className="game-scroller-inner-game-title" to={`/game/${encodeURIComponent(gameName)}`}>{gameName}</Link>
-                <Link className="game-scroller-inner-game-background" to={`/game/${encodeURIComponent(gameName)}`}>
+                <Link className="game-scroller-inner-game-title" to={`/game/${encodeURIComponent(gameId)}`}>{gameName}</Link>
+                <Link className="game-scroller-inner-game-background" to={`/game/${encodeURIComponent(gameId)}`}>
                     <img className="game-scroller-inner-game-background-image" src={gameImage} alt={gameName} />
                 </Link>
             </div>
